@@ -1,2 +1,2 @@
-# publica-now
-This is a business website
+# Publica Now Digital 
+Web Development and Digital Services
