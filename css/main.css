@@ -44,8 +44,10 @@
 	.row-about {
     	text-align: center;
     	margin-top: 1px;
-    	
+    	width: 100%;
     	border-radius: 4px;
+		padding-left: 10%;
+		padding-right: 10%;
 	}
 	img {
     	max-width: 100%;
@@ -57,6 +59,11 @@
     width: 150px;
     height: 150px;
     border-radius: 50%;
+	}
+
+	.sign-line {
+		text-align: center;
+		
 	}
 
 /* Box Model */
@@ -1152,6 +1159,7 @@
 
 	footer {
 		margin-top: 1em;
+		
 	}
 
 	br.clear {
@@ -1800,6 +1808,7 @@
 	#copyright {
 		position: relative;
 		color: #575a5e;
+		padding-left: 10%;
 	}
 
 		#copyright .container {
