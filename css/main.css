@@ -43,11 +43,8 @@
 	}
 	.row-about {
     	text-align: center;
-    	margin-top: 1px;
     	width: 100%;
-    	border-radius: 4px;
-		padding-left: 10%;
-		padding-right: 10%;
+		
 	}
 	img {
     	max-width: 100%;
@@ -60,7 +57,7 @@
     height: 150px;
     border-radius: 50%;
 	}
-
+	
 	.sign-line {
 		text-align: center;
 		
@@ -673,11 +670,11 @@
 		}
 
 		.row.\32 00\25 > * {
-			padding: 70px 0 0 70px;
+			padding: 0px 0 0 0px;
 		}
 
 		.row.\32 00\25 {
-			margin: -70px 0 -1px -70px;
+			margin: -0px 0 -1px -0px;
 		}
 
 		.row.uniform.\32 00\25 > * {
