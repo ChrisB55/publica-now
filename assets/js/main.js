@@ -1,18 +1,23 @@
 /*
-	Theory by TEMPLATED
-	templated.co @templatedco
-	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+	Waypoint by Pixelarity
+	pixelarity.com | hello@pixelarity.com
+	License: pixelarity.com/license
 */
 
 (function($) {
 
-	// Breakpoints.
-		skel.breakpoints({
-			xlarge:	'(max-width: 1680px)',
-			large:	'(max-width: 1280px)',
-			medium:	'(max-width: 980px)',
-			small:	'(max-width: 736px)',
-			xsmall:	'(max-width: 480px)'
+	skel
+		.breakpoints({
+			desktop: '(min-width: 737px)',
+			tablet: '(min-width: 737px) and (max-width: 1200px)',
+			mobile: '(max-width: 736px)'
+		})
+		.viewport({
+			breakpoints: {
+				tablet: {
+					width: 1080
+				}
+			}
 		});
 
 	$(function() {
@@ -20,46 +25,90 @@
 		var	$window = $(window),
 			$body = $('body');
 
-		// Disable animations/transitions until the page has loaded.
-			$body.addClass('is-loading');
+		// Fix: Placeholder polyfill.
+			$('form').placeholder();
 
-			$window.on('load', function() {
-				window.setTimeout(function() {
-					$body.removeClass('is-loading');
-				}, 100);
-			});
-
-		// Prioritize "important" elements on medium.
-			skel.on('+medium -medium', function() {
+		// Prioritize "important" elements on mobile.
+			skel.on('+mobile -mobile', function() {
 				$.prioritize(
-					'.important\\28 medium\\29',
-					skel.breakpoint('medium').active
+					'.important\\28 mobile\\29',
+					skel.breakpoint('mobile').active
 				);
 			});
 
-	// Off-Canvas Navigation.
+		// Dropdowns.
+			$('#nav > ul').dropotron({
+				offsetY: -13,
+				mode: 'fade',
+				noOpenerFade: true,
+				alignment: 'center'
+			});
 
-		// Navigation Panel.
-			$(
-				'<div id="navPanel">' +
-					$('#nav').html() +
-					'<a href="#navPanel" class="close"></a>' +
-				'</div>'
-			)
-				.appendTo($body)
-				.panel({
-					delay: 500,
-					hideOnClick: true,
-					hideOnSwipe: true,
-					resetScroll: true,
-					resetForms: true,
-					side: 'left'
+		// Off-Canvas Navigation.
+
+			// Title Bar.
+				$(
+					'<div id="titleBar">' +
+						'<a href="#navPanel" class="toggle"></a>' +
+					'</div>'
+				)
+					.appendTo($body);
+
+			// Navigation Panel.
+				$(
+					'<div id="navPanel">' +
+						'<nav>' +
+							$('#nav').navList() +
+						'</nav>' +
+					'</div>'
+				)
+					.appendTo($body)
+					.panel({
+						delay: 500,
+						hideOnClick: true,
+						hideOnSwipe: true,
+						resetScroll: true,
+						resetForms: true,
+						side: 'left',
+						target: $body,
+						visibleClass: 'navPanel-visible'
+					});
+
+			// Fix: Remove transitions on WP<10 (poor/buggy performance).
+				if (skel.vars.os == 'wp' && skel.vars.osVersion < 10)
+					$('#titleBar, #navPanel, #page-wrapper')
+						.css('transition', 'none');
+
+		// Slider.
+			var $slider = $('#slider');
+			if ($slider.length > 0) {
+
+				$slider.slidertron({
+					mode: (skel.vars.IEVersion <= 8 ? 'slide' : 'fade'),
+					viewerSelector: '.viewer',
+					reelSelector: '.viewer .reel',
+					slidesSelector: '.viewer .reel .slide',
+					advanceDelay: 4000,
+					speed: 800,
+					navPreviousSelector: '.previous-button',
+					navNextSelector: '.next-button',
+					slideLinkSelector: '.link',
+					seamlessWrap: false,
+					autoFit: true,
+					autoFitAspectRatio: (593 / 359),
 				});
 
-		// Fix: Remove transitions on WP<10 (poor/buggy performance).
-			if (skel.vars.os == 'wp' && skel.vars.osVersion < 10)
-				$('#navPanel')
-					.css('transition', 'none');
+				$window
+					.on('load resize', function() {
+						$slider.trigger('slidertron_reFit');
+					})
+					.trigger('resize');
+
+			}
+
+		// Scrolly.
+			(function(e){var t="click.scrolly";e.fn.n33_scrolly=function(r,i){r||(r=1e3),i||(i=0),e(this).off(t).on(t,function(t){var n,s,o,u=e(this),a=u.attr("href");a.charAt(0)=="#"&&a.length>1&&(n=e(a)).length>0&&(s=n.offset().top,u.hasClass("scrolly-centered")?o=s-(e(window).height()-n.outerHeight())/2:(o=Math.max(s,0),i&&(typeof i=="function"?o-=i():o-=i)),t.preventDefault(),e("body,html").stop().animate({scrollTop:o},r,"swing"))})}})(jQuery);
+			$('.scrolly').n33_scrolly();
 
 	});
 
