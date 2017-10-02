@@ -299,6 +299,29 @@
 					</div>
 				</div>
       -->
+      <button id="modalBtn" class="button">Click to View Project</button>
+      
+        <div id="projectModal" class="modal">
+          <div class="modal-content">
+            <div class="modal-header">
+                
+                <h2>Project 1 Header</h2>
+            </div>
+            <div class="modal-main">
+              <p>Project 1 Description</p>
+              <p><div class="section__example">
+                <img alt="example screenshot of a project involving code"
+                     class="section__exampleImage"
+                     src="images/example1.png"/></p>
+            </div>
+            <div class="modal-footer">
+              <h1><span class="closeBtn">&times;</span></h1>
+            </div>
+          </div>
+        </div>
+
+        
+<!--
       <section class="section section--alignCentered section--description">
         <div class="section__exampleWrapper">
           <div class="section__example">
@@ -307,7 +330,23 @@
                  src="images/example1.png"/>
             <dl class="color--cloud">
               <dt class="section__exampleTitle section__text--centered">
-                Work Example
+                <button id="modalBtn" class="button">Click to View</button>
+                
+                  <div id="simpleModal" class="modal">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                          
+                          <h2>Project Header</h2>
+                      </div>
+                      <div class="modal-body">
+                        <p>Project Description</p>
+                        <p></p>
+                      </div>
+                      <div class="modal-footer">
+                        <h3><span class="closeBtn">&times;</span></h3>
+                      </div>
+                    </div>
+                  </div>
               </dt>
               <dd></dd>
             </dl>
@@ -319,8 +358,7 @@
             <img alt="example screenshot of a project involving chemistry"
                  class="section__exampleImage"
                  src="images/example2.png"/>
-            <!-- “Chemistry” by Surian Soosay is licensed under CC BY 2.0
-                 https://www.flickr.com/photos/ssoosay/4097410999 -->
+            
             <dl class="color--cloud">
               <dt class="section__exampleTitle section__text--centered ">
                 Work Example
@@ -335,8 +373,7 @@
             <img alt="example screenshot of a project involving cats"
                  class="section__exampleImage"
                  src="images/example3.png"/>
-            <!-- “Bengal cat” by roberto shabs is licensed under CC BY 2.0
-                 https://www.flickr.com/photos/37287295@N00/2540855181 -->
+          
             <dl class="color--cloud">
               <dt class="section__exampleTitle section__text--centered">
                 Work Example
@@ -368,7 +405,7 @@
             A long description of the work in question.
           </p>
         </div>
-      </div>
+      </div> -->
           <!-- Copyright -->
           <div id="copyright">
             <a href="#top" class="bubble-top scrolly">Top</a>
@@ -395,6 +432,7 @@
         </div>
 
         <!-- Scripts -->
+        <script src="assets/js/app.js"></script>
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/jquery.dropotron.min.js"></script>
         <script src="assets/js/jquery.slidertron.min.js"></script>
